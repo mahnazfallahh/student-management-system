@@ -1,0 +1,16 @@
+[tool.poetry]
+name = "student system management"
+version = "0.1.0"
+description = ""
+authors = ["mahnazfallahh <mahnaz.falah1213@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+psycopg2 = "^2.9.6"
+toml = "^0.10.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
