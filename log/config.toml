@@ -1,0 +1,38 @@
+[loggers]
+keys = root, database
+
+[handlers]
+keys =rootHandler, databaseHandler
+
+[formatters]
+keys =rootFormatter, databaseFormatter
+
+
+[logger_root]
+level = INFO
+handlers = rootHandler
+
+[logger_database]
+level = INFO
+handlers = databaseHandler
+qualname = database
+propagate = 0
+
+[handler_rootHandler]
+class = FileHandler
+level = INFO
+formatter = rootFormatter
+args = ('Log/main.log',)
+
+[handler_databaseHandler]
+class = FileHandler
+level = INFO
+formatter = databaseFormatter
+args = ('Log/database.log',)
+
+
+[formatter_rootFormatter]
+format = %(name)s - %(levelname)s - %(message)s - %(asctime)s - %(created)f 
+
+[formatter_databaseFormatter]
+format = %(name)s - %(levelname)s - %(message)s - %(asctime)s - %(created)f 
