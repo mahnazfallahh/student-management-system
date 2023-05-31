@@ -1,0 +1,7 @@
+**Student System Management**
+this is student system management which you can do CRUD operation
+there are 3 choices:
+<1> add
+<2> read
+<3> update
+<4> delete 
