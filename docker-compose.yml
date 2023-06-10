@@ -10,6 +10,9 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1234
       - POSTGRES_DB=postgres
+    networks:
+      - main
+    restart: always
     depends_on:
       - postgres
 
@@ -20,3 +23,10 @@ services:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=1234
       - POSTGRES_DB=postgres
+    networks:
+      - main
+    restart: always
+
+
+networks:
+  main:
