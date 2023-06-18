@@ -1,27 +1,23 @@
-FROM python:latest
+FROM python:3.9
 
-LABEL maitainer="mahnazfallah2023@gmail.com"
+WORKDIR /app
 
-WORKDIR /src
+COPY poetry.lock pyproject.toml /app/
 
-COPY poetry.lock pyproject.toml /src/
-
-RUN pip install poetry
-
-RUN poetry config virtualenvs.create false && \
+RUN pip install poetry && \
+    poetry config virtualenvs.create false && \
     poetry install --no-interaction --no-ansi
 
-COPY . /src
+COPY . /app/
 
-ENV POSTGRES_HOST=localhost
+ENV POSTGRES_HOST=postgres
 ENV POSTGRES_PORT=5432
 ENV POSTGRES_USER=postgres
 ENV POSTGRES_PASSWORD=1234
 ENV POSTGRES_DB=postgres
+ENV REDIS_HOST=redis
+ENV REDIS_PORT=6379
 
-CMD ["python", "run.py"]
+EXPOSE 8000
 
-
-
-
-
+CMD ["poetry", "run", "uvicorn", "run:app", "--host", "0.0.0.0", "--port", "8000"]
