@@ -1,3 +1,4 @@
+import redis
 import logging.config
 
 
@@ -18,6 +19,7 @@ class Student:
         - connection: A psycopg2 connection object representing the connection to the PostgreSQL database.
         """
         self.connection = connection
+        self.redis = redis.Redis(host='redis', port=6379, db=0)
 
     def insert_student(
         self,
@@ -83,22 +85,28 @@ class Student:
         This method retrieves all student records from the 'students' table in the database and prints the details.
 
         """
-        query = "SELECT * FROM students"
-        cursor = self.connection.cursor()
-        cursor.execute(query)
-        records = cursor.fetchall()
-        for record in records:
-            print("Id:", record[0])
-            print("Name:", record[1])
-            print("LastName:", record[2])
-            print("Gender:", record[3])
-            print("Birthdate:", record[4])
-            print("Grade:", record[5])
-            print("GraduationDate:", record[6])
-            print("Address:", record[7])
-            print("PhoneNumber:", record[8])
-        cursor.close()
-        logger.info("user get a list of students.")
+        if self.redis.exists("students"):
+            records = self.redis.get("students")
+            print("retrieving students from cache ... ")
+            logger.info("retrieving students from cache ...")
+        else:
+            query = "SELECT * FROM students"
+            cursor = self.connection.cursor()
+            cursor.execute(query)
+            records = cursor.fetchall()
+            for record in records:
+                print("Id:", record[0])
+                print("Name:", record[1])
+                print("LastName:", record[2])
+                print("Gender:", record[3])
+                print("Birthdate:", record[4])
+                print("Grade:", record[5])
+                print("GraduationDate:", record[6])
+                print("Address:", record[7])
+                print("PhoneNumber:", record[8])
+            cursor.close()
+            self.redis.set("students", records)
+            logger.info("user get a list of students.")
 
     def update_student(
         self,
