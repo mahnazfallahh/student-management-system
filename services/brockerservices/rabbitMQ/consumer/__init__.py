@@ -1,0 +1,1 @@
+from .reciever import RabbitMqConsumer
