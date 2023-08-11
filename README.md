@@ -7,7 +7,6 @@
   - [RabbitMQ](#rabbitmq)
   - [Docker](#docker)
   - [Redis](#redis)
-  - [PostgreSQL](#postgresql)
   - [Sqlalchemy](#sqlalchemy)
   - [Descriptors](#descriptors)
   - [Enums](#enums)
@@ -44,6 +43,11 @@ Data Caching, there are parts of the system that repeatedly fetch the same data 
 Detail how sqlalchemy is utilized within my project:
 In student system management, the SQLAlchemy library is leveraged extensively to interact with the PostgreSQL database, manage data models, and perform database operations efficiently. SQLAlchemy provides an Object-Relational Mapping (ORM) approach that allows you to work with database records as Python objects. 
 
+### Docker 
+
+In student system management, Docker is employed to create containerized environments that encapsulate the application, its dependencies, and services in a consistent and isolated manner. Docker simplifies deployment, enhances portability, and streamlines development across different environments. 
+
+
 ### Descriptors
 
 the purpose of descriptors in my project, focusing on how they are used for data validation or customization:
@@ -72,7 +76,6 @@ Enums ensure that attribute values adhere to a predefined set of valid options. 
 2. Navigate to the project directory: `cd crud`
 3. Install dependencies: `pip install -r requirements.txt`
 
-
 ### Running the Application
-
-for running program just run "run.py" module .  
+1. run docker-compose file by "sudo docker-compose up -d" command .
+2. for running program just run "run.py" module .  
