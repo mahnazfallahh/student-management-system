@@ -72,7 +72,7 @@ Enums ensure that attribute values adhere to a predefined set of valid options. 
 
 ### Installation
 
-1. Clone the repository: `git clone https://github.com/your-username/your-repo.git`
+1. Clone the repository: `git clone https://github.com/mahnazfallahh/student-management-system.git`
 2. Navigate to the project directory: `cd crud`
 3. Install dependencies: `pip install -r requirements.txt`
 
