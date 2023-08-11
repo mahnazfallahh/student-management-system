@@ -1,3 +1,5 @@
+version: '3'
+
 services:
   app:
     build: .
@@ -5,35 +7,33 @@ services:
     environment:
       - POSTGRES_HOST=postgres
       - POSTGRES_PORT=5432
-      - POSTGRES_USER=postgres
+      - POSTGRES_USER=crud
       - POSTGRES_PASSWORD=1234
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=crud
       - REDIS_HOST=redis
       - REDIS_PORT=6379
+      - RABBITMQ_HOST=rabbitmq
+      - RABBITMQ_PORT=5672
+      - RABBITMQ_USERNAME=guest
+      - RABBITMQ_PASSWORD=guest
     depends_on:
       - postgres
       - redis
+      - rabbitmq
     networks:
       - main
     ports:
       - "8000:8000"
-    reset:
-      always
-    volumes:
-      - .:/app
-    command: poetry run uvicorn app.main:app --reload --host 0.0.0.0 --port 8000
 
   postgres:
     image: postgres
     container_name: postgres
     environment:
-      - POSTGRES_USER=postgres
+      - POSTGRES_USER=crud
       - POSTGRES_PASSWORD=1234
-      - POSTGRES_DB=postgres
+      - POSTGRES_DB=crud
     networks:
       - main
-    reset:
-      always
     volumes:
       - postgres_data:/var/lib/postgresql/data/
     ports:
@@ -44,10 +44,20 @@ services:
     container_name: redis
     networks:
       - main
-    reset:
-      always
     ports:
-      - "6379:6379"
+      - "6380:6379"
+
+  rabbitmq:
+    image: rabbitmq
+    container_name: rabbitmq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    networks:
+      - main
+    ports:
+      - "5672:5672"
+      - "15672:15672"
 
 networks:
   main:
