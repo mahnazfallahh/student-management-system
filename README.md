@@ -8,17 +8,10 @@
   - [Docker](#docker)
   - [Redis](#redis)
   - [Sqlalchemy](#sqlalchemy)
-  - [Descriptors](#descriptors)
-  - [Enums](#enums)
 - [Getting Started](#getting-started)
-  - [Prerequisites](#prerequisites)
   - [Installation](#installation)
-  - [Configuration](#configuration)
 - [Usage](#usage)
   - [Running the Application](#running-the-application)
-  - [Working with Docker](#working-with-postgresql)
-  - [Working with Redis](#working-with-redis)
-  - [Messaging with RabbitMQ](#messaging-with-rabbitmq)
 
 ## Introduction
 
