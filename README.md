@@ -30,16 +30,14 @@ Welcome to Student Management System! This project is designed to do CRUD operat
 ### RabbitMQ
 
 the role of RabbitMQ in my project:
-
-####Message Queues
+Message Queues
 Imagine we have a process that needs to insert student records into the database. Instead of performing the database insertion directly, we send a message to a queue in RabbitMQ that signifies the request to insert a new student record. Another part of the system, specifically designed to handle database operations, listens to this queue. When a message arrives, it processes the request and performs the necessary database actions. This architecture not only improves the responsiveness of the application but also enhances its scalability.
 
 ### Redis
 
 Detail how Redis is utilized within my project:
 
-####Data Caching
-In many applications, there are parts of the system that repeatedly fetch the same data from a database, causing unnecessary delays and potentially straining the database server. To mitigate this, Redis is utilized as a caching mechanism. Whenever data is fetched from the database, a copy is also stored in Redis. Subsequent requests for the same data can then be fulfilled directly from Redis, significantly reducing the load on the database server and improving response times. This caching approach ensures that frequently accessed data is readily available, leading to a smoother user experience.
+Data Caching, there are parts of the system that repeatedly fetch the same data from a database, causing unnecessary delays and potentially straining the database server. To mitigate this, Redis is utilized as a caching mechanism. Whenever data is fetched from the database, a copy is also stored in Redis. Subsequent requests for the same data can then be fulfilled directly from Redis, significantly reducing the load on the database server and improving response times. This caching approach ensures that frequently accessed data is readily available, leading to a smoother user experience.
 
 ### Sqlalchemy
 
