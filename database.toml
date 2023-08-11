@@ -1,5 +1,5 @@
 [database]
 host = "localhost"
-database = "postgres"
-user = "postgres"
+database = "crud"
+user = "crud"
 password = "1234"
